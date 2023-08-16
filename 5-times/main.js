@@ -294,7 +294,7 @@ $(function() {
 
     // Initialize like buttons
           var current_click = 0;
-          var limit_click = 2;
+          var limit_click = 5;
 	  $('.btn-like').on('click', function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
       // Like buttons can only be clicked once
