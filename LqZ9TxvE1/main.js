@@ -298,10 +298,11 @@ $(function() {
 	  $('.btn-like').on('click', function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
       // Like buttons can only be clicked once
-                  current_click = current_click + 1;
-                  if (current_click >= limit_click) {  
+      $(this).attr("disabled", true);
+      current_click = current_click + 1;
+      if (current_click >= limit_click) {  
 		      $('.btn-like').attr("disabled", true);
-                  }
+      }
 	  });
 
     // Initalize Masonry plugin
