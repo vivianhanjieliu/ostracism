@@ -314,7 +314,6 @@ $(function() {
       } else {
         user_likes.set(user_name, 1);
       }
-      console.log(user_likes.get(user_name));
 	  });
 
     // Initalize Masonry plugin
@@ -336,8 +335,12 @@ $(function() {
     
     $('#final-continue').on('click', function() {
 
+      resultString = "";
+      for (const [key, value] of user_likes) {
+        resultString = resultString+"&"+key+"="+value
+      }
       // Redirect link
-      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
+      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description)+resultString;
 
     });
     

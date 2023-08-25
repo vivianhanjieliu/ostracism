@@ -293,10 +293,20 @@ $(function() {
 	 
 
     // Initialize like buttons
-          var current_click = 0;
-          var limit_click = 5;
+    var current_click = 0;
+    var limit_click = 5;
 	  $('.btn-like').on('click', function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
+
+      var user_name = $(this).attr('id');
+      var likes = user_likes.get(user_name);
+      if (likes !== undefined) {
+        likes = likes + 1;
+        user_likes.set(user_name, likes);
+      } else {
+        user_likes.set(user_name, 1);
+      }
+
       // Like buttons can only be clicked once
       $(this).attr("disabled", true);
       current_click = current_click + 1;
@@ -324,8 +334,13 @@ $(function() {
     
     $('#final-continue').on('click', function() {
 
+      resultString = "";
+      for (const [key, value] of user_likes) {
+        resultString = resultString+"&"+key+"="+value
+      }
+
       // Redirect link
-      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
+      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description)+resultString;
 
     });
     
@@ -477,6 +492,8 @@ $(function() {
   });   
 
   // Set Settings, get Participant No. and Condition No.
+  user_likes = new Map();
+
   set_settings();
   get_params();
   adjust_to_condition();
