@@ -5,7 +5,7 @@ window.others = {
   "posts" : [
       {
         "avatar": "avatars/others/george.png",
-        "username": "Georgeee",
+        "username": "Georgee",
         "text": "I'm a 19 year old dude from Wisconsin (commence making fun of my accent). I love music and lately you can catch me listening to nothing but Joy Division, Echo & the bunnymen, and the smiths. Besides music I like learning languages, psychology, drawing, and writing.",
         "likes": [45000, 50000, 110000, 150000] //4
       },

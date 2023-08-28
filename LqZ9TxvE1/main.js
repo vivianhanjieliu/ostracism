@@ -232,11 +232,11 @@ $(function() {
 		
     // Add user box to slide     
 	  var tpl = $('#usertmp').html(),html = Mustache.to_html(tpl, users);
-	  $("#task").append(html);
+	  $("#profiles").append(html);
 	  
     // Add other boxes to slide    
 	  var tpl = $('#otherstmp').html(),html = Mustache.to_html(tpl, others);
-	  $("#task").append(html);
+	  $("#profiles").append(html);
  
     // Randomize order of other players boxes
     function reorder() {
@@ -317,9 +317,9 @@ $(function() {
 
     // Initalize Masonry plugin
     // For display of user and other players boxes in columns without gaps
-		$('#task').masonry({
+		$('#profiles').masonry({
 		  itemSelector : '.entry',
-		  columnWidth : 10
+		  // columnWidth : 10
 		});
 
 

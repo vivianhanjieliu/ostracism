@@ -17,10 +17,13 @@ If you don't have experience with programming, it is important that you alter on
 <meta name="author" content="">
 
 <!-- Stylesheets -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css" rel="stylesheet">
-<link href="style.css" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
 
 <!-- For IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -35,135 +38,149 @@ If you don't have experience with programming, it is important that you alter on
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
 <script src="shortcut.js"></script>
 <script src="main.js"></script>
-<script type="text/javascript" src="profiles.json"></script>
+<script type="text/javascript" src="../profiles.json"></script>
 
 </head>
 
 <body oncontextmenu="return false;">
-<div class="container">
+<div class="container-fluid">
+
+
+<div class="row justify-content-center">
+  <div class="col-4">
+    <div id="intro" style="display:none;" class="instr">
+     <!-- 
+    /* 
+      
+    **Intro**
+    ---------
+    You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
+
+    */ 
+    --> <h3>Welcome to this study</h3>
+
+      You will complete a number of simple tasks, together with other people, <br>
+      with whom you will be connected via the internet. 
+      <br><br>
+      First, all participants in the study will select personal "avatars" and <br>
+      write short texts to introduce themselves.
+      <br><br>
+      Before beginning the tasks, you will spend 3 minutes with the other <br>
+      people. During this time, you will be able to read and react to <br>
+      each-other's brief introductions.
+      <br><br>
+      Specific instructions will follow.<br><br>
+      <b>Thank you!</b><br><br>
+      <button type="submit" id="submit_intro">Continue</button>
+    </div>
 
 
 
-<div id="intro" style="display:none;" class="instr">
- <!-- 
-/* 
-  
-**Intro**
----------
-You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
+    <div id="name" style="display:none;" class="instr">
+    <!-- 
+    /* 
+      
+    **Username**
+    ---------
+    You can edit the instructions text for entering usernames below.
 
-*/ 
---> <h3>Welcome to this study</h3>
-
-  You will complete a number of simple tasks, together with other people, <br>
-  with whom you will be connected via the internet. 
-  <br><br>
-  First, all participants in the study will select personal "avatars" and <br>
-  write short texts to introduce themselves.
-  <br><br>
-  Before beginning the tasks, you will spend 3 minutes with the other <br>
-  people. During this time, you will be able to read and react to <br>
-  each-other's brief introductions.
-  <br><br>
-  Specific instructions will follow.<br><br>
-  <b>Thank you!</b><br><br>
-  <button type="submit" id="submit_intro">Continue</button>
+    */ 
+    -->
+      <h3>Please enter your name</h3>
+      Could be your first name, nickname, or initials<br><br>
+      
+      <input type="text" id="username"  autocomplete="off" /><br> <br>
+      <button type="submit"  id="submit_username">Submit</button>
+    </div>
+  </div>
 </div>
 
 
 
-<div id="name" style="display:none;" class="instr">
-<!-- 
-/* 
-  
-**Username**
----------
-You can edit the instructions text for entering usernames below.
+<div class="row justify-content-center">
+  <div class="col-7">
+    <div id="avatar" style="display:none;" class="instr"> 
+    <!-- 
+    /* 
+      
+    **Avatar choice**
+    ---------
+    You can edit the instructions text. The text "Your choice of avatar will not be recorded or analyzed" depends on whether you record the choice of avatar.
 
-*/ 
--->
-	<h3>Please enter your name</h3>
-	Could be your first name, nickname, or initials<br><br>
-	
-	<input type="text" id="username"  autocomplete="off" /><br>	<br>
-	<button type="submit"  id="submit_username">Submit</button>
+    */ 
+    --> <h3>Please select an avatar</h3>
+      This avatar will represent you during the group task, but will not be linked to any of your responses. <br>Your choice of avatar will not be recorded or analyzed.
+      <br><br>
+      <div class="avatars"></div>
+      <br><button type="submit"  id="submit_avatar">Submit</button>
+      <br><br>
+    </div>
+  </div>
+</div>  
+
+
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div id="text" style="display:none;" class="instr"> 
+    <!-- 
+    /* 
+      
+    **Description entry**
+    ---------
+    You can edit the instructions text. 
+
+    */ 
+    --> <h3>Please introduce yourself </h3>
+      Please write a paragraph in which you introduce yourself to the rest of the group. <br>
+      Write something you would like to tell about yourself - anything you want to share.
+      <br><br>  
+      <textarea id="description" autocomplete="off" /></textarea><br>
+      <span id="count">Characters left: 400</span><br><br>
+      <button type="submit" id="submit_text">Submit</button>
+    </div>  
+  </div>
 </div>
 
 
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div id="fb_intro" style="display:none;" class="instr">
+    <!-- 
+    /* 
+      
+    **Task instructions**
+    ---------
+    You can edit the instructions text. The prompt to try and form an impression of the other players is recommended in all ostacism paradigms. Defining the action of "liking" is also recommended. The information regarding task duration can be adjusted to match the actual duration you have set.
 
-<div id="avatar" style="display:none;">	
-<!-- 
-/* 
-  
-**Avatar choice**
----------
-You can edit the instructions text. The text "Your choice of avatar will not be recorded or analyzed" depends on whether you record the choice of avatar.
-
-*/ 
--->	<h3>Please select an avatar</h3>
-	This avatar will represent you during the group task, but will not be linked to any of your responses. <br>Your choice of avatar will not be recorded or analyzed.
-	<br><br>
-	<div class="avatars"></div>
-	<br><button type="submit"  id="submit_avatar">Submit</button>
-	<br><br>
-</div>	
-
-
-<div id="text" style="display:none;" class="instr">	
-<!-- 
-/* 
-  
-**Description entry**
----------
-You can edit the instructions text. 
-
-*/ 
--->	<h3>Please introduce yourself </h3>
-	Please write a paragraph in which you introduce yourself to the rest of the group. <br>
-	Write something you would like to tell about yourself - anything you want to share.
-	<br><br>	
-	<textarea id="description" autocomplete="off" /></textarea><br>
-	<span id="count">Characters left: 400</span><br><br>
-	<button type="submit" id="submit_text">Submit</button>
-</div>	
+    */ 
+    -->  <h3>Group Introduction</h3>
+      Soon after connecting, you should be able to see the other people's descriptions. <br>
+      You can read and react to the short introduction they wrote about themselves, by <br>
+      clicking a "like" button, similar to the "like" button on Facebook ("favorite" on Twitter,<br> 
+      &hearts; in Tumblr and Instagram, etc.) <br>
+      <br>
+      Even though your interaction is minimal, please try to form an impression of the <br>
+      people in the group. Try to imagine them in real life - how they might look <br>
+      or sound, what kind of people they are, how you would get along with them.
+      <br><br>The task will last 3 minutes and is very important to the study, so please be attentive,
+      <br>without switching pages, or doing unrelated tasks. Questions about the other people <br>might follow.
+      <br><br><b>If these instructions are clear, you can proceed to log in.</b><br>
+      <br>
+      <button type="submit"  id="submit_fb_intro">Log in</button>
+    </div>
 
 
 
-<div id="fb_intro" style="display:none;" class="instr">
-<!-- 
-/* 
-  
-**Task instructions**
----------
-You can edit the instructions text. The prompt to try and form an impression of the other players is recommended in all ostacism paradigms. Defining the action of "liking" is also recommended. The information regarding task duration can be adjusted to match the actual duration you have set.
-
-*/ 
--->  <h3>Group Introduction</h3>
-  Soon after connecting, you should be able to see the other people's descriptions. <br>
-  You can read and react to the short introduction they wrote about themselves, by <br>
-  clicking a "like" button, similar to the "like" button on Facebook ("favorite" on Twitter,<br> 
-  &hearts; in Tumblr and Instagram, etc.) <br>
-  <br>
-  Even though your interaction is minimal, please try to form an impression of the <br>
-  people in the group. Try to imagine them in real life - how they might look <br>
-  or sound, what kind of people they are, how you would get along with them.
-  <br><br>The task will last 3 minutes and is very important to the study, so please be attentive,
-  <br>without switching pages, or doing unrelated tasks. Questions about the other people <br>might follow.
-  <br><br><b>If these instructions are clear, you can proceed to log in.</b><br>
-  <br>
-  <button type="submit"  id="submit_fb_intro">Log in</button>
-</div>
-
-
-
-<div id="fb_login" style="display:none;" class="instr">
-  <h3>Establishing connection</h3>
-  Please wait while you are being connected to the other participants in your group.<br><br>
-  <img class="load" src='ajax-loader.gif' id="loader">
-  <div id="msg_all_done" style="display:none;">
-  <br>
-  	<b>All participants are now connected and you are ready to proceed.</b><br><br>
-  	<button type="submit"  id="submit_fb_login">Continue</button>
+    <div id="fb_login" style="display:none;" class="instr">
+      <h3>Establishing connection</h3>
+      Please wait while you are being connected to the other participants in your group.<br><br>
+      <img class="load" src='ajax-loader.gif' id="loader">
+      <div id="msg_all_done" style="display:none;">
+      <br>
+      	<b>All participants are now connected and you are ready to proceed.</b><br><br>
+      	<button type="submit"  id="submit_fb_login">Continue</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -177,18 +194,27 @@ You can edit the instructions text.
 
 */ 
 -->
-<div id="task" style="display:none;">
-	<div id="countdown"><span class="secs" style="display: none;"></span>You can click "Like" if you have enjoyed somebody's description<br><br>time left:<br><span id="timer" class="cntr label label-info"></span>
-	<br>
-	<button type="submit" id='final-continue' style="display:none;">Continue</button>	
-	</div>
+<div id="task" class="container-fluid" style="display:none;">
+  <div class="row">
+    <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
+      <div class="row" id="profiles">
+        <!-- #data-masonry='{"percentPosition": true }' -->
+      </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1">
+      <div id="countdown"><span class="secs" style="display: none;"></span>You can click "Like" if you have enjoyed somebody's description<br><br>time left:<br><span id="timer" class="cntr label label-info"></span>
+      <br>
+      <button type="submit" id='final-continue' style="display:none;">Continue</button> 
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <script type="template/text" id="usertmp">
   {{#posts}}
     
-    <div class="entry">
+    <div class="entry col-xs-12 col-sm-4 col-md-3 col-lg-2">
     <div class="tophalf">
 
     	<img src="{{avatar}}" class="avatar">
@@ -213,7 +239,7 @@ You can edit the instructions text.
 
 <script type="template/text" id="otherstmp">
   {{#posts}}
-    <div class="entry">
+    <div class="entry col-xs-12 col-sm-4 col-md-3 col-lg-2">
     <div class="tophalf">
 
     	<img src="{{avatar}}" class="avatar">

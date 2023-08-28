@@ -217,13 +217,6 @@ $(function() {
   		callBack: function(me) {
   			console.log('over');
         $('#timer').text('00:00');
-        var file_name = new Date().getTime() + '.json';
-        console.log(file_name);
-        const a = document.createElement('a');
-        const blob = new Blob([JSON.stringify(Array.from(user_likes.entries()))]);
-        a.href = URL.createObjectURL(blob);
-        a.download = file_name;
-        a.click();
   		}
   	});
 	   
@@ -241,11 +234,11 @@ $(function() {
 		
     // Add user box to slide     
 	  var tpl = $('#usertmp').html(),html = Mustache.to_html(tpl, users);
-	  $("#task").append(html);
+	  $("#profiles").append(html);
 	  
     // Add other boxes to slide    
 	  var tpl = $('#otherstmp').html(),html = Mustache.to_html(tpl, others);
-	  $("#task").append(html);
+	  $("#profiles").append(html);
     console.log($('#otherstmp'));
  
     // Randomize order of other players boxes
@@ -318,9 +311,9 @@ $(function() {
 
     // Initalize Masonry plugin
     // For display of user and other players boxes in columns without gaps
-		$('#task').masonry({
+		$('#profiles').masonry({
 		  itemSelector : '.entry',
-		  columnWidth : 10
+		  // columnWidth : 10
 		});
 
 
