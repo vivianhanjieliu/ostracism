@@ -328,7 +328,10 @@ $(function() {
     
     $('#final-continue').on('click', function() {
 
-      resultString = "";
+      if(window.condition == 2) {
+        condition = condition + 1;
+      }
+      resultString = "&condition="+condition;
       for (const [key, value] of user_likes) {
         resultString = resultString+"&"+key+"="+value
       }
@@ -484,7 +487,8 @@ $(function() {
     return 'Are you sure you want to quit the experiment completely?';
   });
 
-  user_likes = new Map();   
+  user_likes = new Map(); 
+  condition = 5;  
 
   // Set Settings, get Participant No. and Condition No.
   set_settings();
