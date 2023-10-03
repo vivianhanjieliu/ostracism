@@ -327,11 +327,12 @@ $(function() {
     $('#timer').text('00:00');
     
     $('#final-continue').on('click', function() {
+      mycondition = 5;  
 
       if(window.condition == 2) {
-        condition = condition + 1;
+        mycondition = mycondition + 1;
       }
-      resultString = "&condition="+condition;
+      resultString = "&condition="+mycondition;
       for (const [key, value] of user_likes) {
         resultString = resultString+"&"+key+"="+value
       }
@@ -488,7 +489,6 @@ $(function() {
   });
 
   user_likes = new Map(); 
-  condition = 5;  
 
   // Set Settings, get Participant No. and Condition No.
   set_settings();
